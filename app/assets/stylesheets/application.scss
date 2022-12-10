@@ -1,0 +1,15 @@
+@import "bootstrap";
+
+:root {
+    --main: #002c5d;
+    --secondary: #f2ff02;
+  }
+  
+.navbar {
+    background-color: var(--main) !important;
+  }
+
+
+.navbar-brand {
+    color: white;
+  }
