@@ -1,29 +1,35 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5 ">
+  <% if notice %>
+    <p  class="alert alert-danger" role="alert"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger" role="alert"><%= alert %></p>
+  <% end %>
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Join to upload your own albums , music & more !</h1>
+      <p class="col-lg-10 fs-4">Create an account or login to enjoy the best experience of Discotic, where you can upload your own music , create playlists with your favorite selections & much more!</p>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5 ">
+      <%= form_for(resource,:html => {:class => 'p-4 p-md-5 border rounded-3 bg-main',"data-turbo" => "false"}, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="form-floating mb-3">
+          <%= f.email_field :email,required:true, class:"form-control",id:"emailInput",placeholder:"name@example.com" %>
+          <%= f.label :email,"Email address",for:"emailInput" %>
+        </div>
+        <div class="form-floating mb-3">
+          <%= f.password_field :password,required:true, class:"form-control",id:"PasswordInput",placeholder:"Password" %>
+          <%= f.label :password,"Password",for:"PasswordInput" %>
+        </div>
+        <div class="form-floating mb-3">
+          <%= f.password_field :password_confirmation,required:true, class:"form-control",id:"PasswordConInput",placeholder:"Password" %>
+          <%= f.label :password_confirmation,"Password Confirmation",for:"PasswordConInput" %>
+        </div>
+        <%= f.submit "Create Account",class:"w-100 btn btn-lg btn-warning" %>
+        <hr class="text-sec">
+        <small class="text-sec">You already have an account ?</small>
+        <%= link_to "Login", new_session_path(resource_name), class:"w-100 btn btn-lg btn-outline-warning"  %>
+      <% end %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
