@@ -1,15 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import "bootstrap";
+@import "font-awesome";
 
 :root {
-    --main: #002c5d;
-    --secondary: #f2ff02;
-  }
-  
-.navbar {
-    background-color: var(--main) !important;
-  }
+  --main: #002c5d;
+  --secondary: #f5c02c;
+  --light: #f5f5f5;
+}
 
+body {
+  background-color: var(--light);
+  font-family: "Montserrat", sans-serif;
+}
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    box-shadow: none !important;
+    -webkit-appearance:none !important;
+}
+
+.text-sec {
+  color: var(--secondary);
+}
+
+.search-btn{
+border-top-left-radius: 0 !important;
+border-bottom-left-radius: 0 !important;
+}
+
+.bg-main {
+  background-color: var(--main) !important;
+}
+
+.bg-sec {
+  background-color: var(--secondary) !important;
+}
+
+.navbar {
+  background-color: var(--main) !important;
+}
 
 .navbar-brand {
-    color: white;
-  }
+  color: white;
+  font-size: 2rem;
+}
+
+.o-icon {
+  font-size: 1.45rem !important;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none !important;
+}

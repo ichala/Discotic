@@ -89,6 +89,8 @@ GEM
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5-x64-mingw-ucrt)
+    font-awesome-sass (6.2.1)
+      sassc (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -210,6 +212,7 @@ DEPENDENCIES
   bootstrap (~> 5.1.3)
   debug
   dotenv-rails
+  font-awesome-sass (~> 6.2.1)
   importmap-rails
   jbuilder
   pg (~> 1.1)
