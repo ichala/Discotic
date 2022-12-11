@@ -4,14 +4,15 @@
     <title>Discotic</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>  
+    <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-  <%= render "partials/navbar/navbar" %>
-    <%= yield %>
-<%= render "partials/footer/footer" %>
+    <%= render "partials/navbar/navbar" %>
+    <div class="mt-5">
+      <%= yield %>
+    </div>
+    <%= render "partials/footer/footer" %>
   </body>
 </html>
