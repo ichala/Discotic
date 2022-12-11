@@ -30,8 +30,8 @@ gem 'turbo-rails'
 
 gem 'devise'
 
-gem 'will_paginate-bootstrap-style'
 gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap-style'
 
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'shrine', '~> 3.3'

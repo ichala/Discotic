@@ -2,9 +2,6 @@ class AlbumsController < ApplicationController
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
-
- 
-
   def new
     @album = Album.new
   end
@@ -26,8 +23,6 @@ class AlbumsController < ApplicationController
       render :show
     end
   end
-  
-
 
   def create
     @album = Album.new(album_params)
@@ -43,21 +38,21 @@ class AlbumsController < ApplicationController
     @albums = current_user.albums.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
-  def destroy 
+  def destroy
     @album = current_user.albums.find(params[:id])
-    if @album.destroy   
-    redirect_to my_albums_url(1) , success: 'Album deleted'
+    if @album.destroy
+      redirect_to my_albums_url(1), success: 'Album deleted'
     else
-    redirect_to my_albums_url(1) , error: "Couldn't delete album"
+      redirect_to my_albums_url(1), error: "Couldn't delete album"
     end
   end
 
-  def update 
+  def update
     @album = current_user.albums.find(params[:id])
     if @album.update(album_params)
-     redirect_to my_albums_url(1) , success: 'Album updated'
+      redirect_to my_albums_url(1), success: 'Album updated'
     else
-     redirect_to my_albums_url(1) , error: "Couldn't update album"
+      redirect_to my_albums_url(1), error: "Couldn't update album"
     end
   end
 
