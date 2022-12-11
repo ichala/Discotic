@@ -9,6 +9,11 @@
               <h4 class="text-white"><%= @album.name %></h4>
               <p class="text-white mb-1">By <%= @album.artist %></p>
               <button class="btn bg-main text-white"><i class="fa-solid fa-star text-sec"></i> Add to Favorites</button>
+              <% if current_user.id === @album.user_id %>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fa-solid fa-circle-plus"></i> Add Track
+              </button>
+                <% end %>
             </div>
           </div>
         </div>
@@ -125,3 +130,35 @@
     </div>
   </div>
 </div>
+<% if current_user.id === @album.user_id %>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog bg-main rounded border-0">
+      <div class="modal-content bg-main text-center rounded text-sec border-0">
+        <div class="modal-body border-0">
+          <form>
+            <div class="row">
+              <div class="mb-3">
+                <label for="TrackName" class="form-label">Track Name</label>
+                <input type="text" name="" id="TrackName" class="form-control" placeholder="Track Name">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="TrackLength" class="form-label">Track Length (min)</label>
+                <input type="number" name="" id="TrackLength" class="form-control" placeholder="Track Length">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="TrackLink" class="form-label">Spotify Link</label>
+                <input type="text" name="" id="TrackLink" class="form-control" placeholder="Track Link">
+              </div>
+            </div>
+            <div class="modal-footer border-0">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-warning">Add to Album</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
