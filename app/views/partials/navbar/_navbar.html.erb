@@ -12,9 +12,6 @@
         </div>
       </div>
       <ul class="navbar-nav  mb-2 mb-lg-0">
-        <%# <li class="nav-item">
-          <a class="nav-link text-white" href="#">Link</a>
-        </li> %>
         <% if user_signed_in?  %>
           <li class="nav-item dropdown">
             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,6 +19,7 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item disabled" href="#"><%= current_user.email %> </a></li>
+              <li><%= link_to raw('<i class="fa-solid fa-record-vinyl"></i> My Albums'), my_albums_url(1) ,class: 'dropdown-item' %></li>
               <li> <%= link_to raw('<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout'), destroy_user_session_path,  data: {turbo_method: :delete} ,class: 'dropdown-item text-danger' %></li>
             </ul>
           </li>
