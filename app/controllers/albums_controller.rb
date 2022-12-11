@@ -2,7 +2,6 @@ class AlbumsController < ApplicationController
   protect_from_forgery with: :exception
   before_action :authenticate_user!, only: %i[new create]
 
-  
   def new
     @album = Album.new
   end
@@ -13,7 +12,7 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to root_path
     else
-     redirect_to new_album_path , error: @album.errors.full_messages
+      redirect_to new_album_path, error: @album.errors.full_messages
     end
   end
 

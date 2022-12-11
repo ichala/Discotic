@@ -32,6 +32,8 @@ Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Layout/EndOfLine:
+  Enabled: false
 Style/EachForSimpleLoop:
   Enabled: false
 Style/AndOr:
@@ -41,7 +43,7 @@ Style/DefWithParentheses:
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 Style/EndOfLine:
-  EnforcedStyle: lf
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
