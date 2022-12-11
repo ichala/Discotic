@@ -1,0 +1,43 @@
+<div class="container" data-controller="album">
+  <div class="py-5 text-center">
+    <h2>Update Album # <%= @album.id %> </h2>
+  </div>
+  <% if error %>
+  <% error.each do |msg| %>
+    <div class="alert alert-danger" role="alert">
+      <%= msg %>
+    </div>
+  <% end %>
+  <% end %>
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <%= form_for(@album,:html => {"data-turbo" => "false"}) do |f| %>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <%= f.label :name,"Album Name",for:"AlbumName" %>
+            <%= f.text_field :name,required:true, class:"form-control",id:"AlbumName" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <%= f.label :artist,"Artist Name",for:"artistName" %>
+            <%= f.text_field :artist,required:true, class:"form-control",id:"artistName"%>
+          </div>
+        </div>
+        <%= f.label :description,"Description",for:"Description" %>
+        <%= f.text_area :description,required:true,class:"form-control mb-3",id:"Description",style:"height: 100px" %>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <%= f.label :release_date,"Release Date",for:"ReleaseDate" %>
+            <%= f.date_field :release_date,required:true, class:"form-control",id:"ReleaseDate" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <%= f.label :image,"Album Cover Image",for:"ImageLink" %>
+            <%= f.file_field :image, class:"form-control",id:"ImageLink" %>
+          </div>
+        </div>
+        <%= f.submit "Update",class:"w-100 btn btn-lg btn-warning mb-5" %>
+      <% end %>
+              <%= link_to "Cancel", my_albums_url(1) ,class:"w-40 btn btn-sm btn-danger mb-5" %>
+
+    </div>
+  </div>
+</div>
