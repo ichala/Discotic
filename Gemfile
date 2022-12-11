@@ -30,6 +30,8 @@ gem 'turbo-rails'
 
 gem 'devise'
 
+gem 'kaminari'
+
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'shrine', '~> 3.3'
 
