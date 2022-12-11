@@ -25,10 +25,14 @@ gem 'importmap-rails'
 # Add font-awesome
 gem 'font-awesome-sass', '~> 6.2.1'
 
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
 
 gem 'devise'
+
+gem 'shrine', '~> 3.3'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
