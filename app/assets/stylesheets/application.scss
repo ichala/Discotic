@@ -11,7 +11,16 @@
 body {
   background-color: var(--light);
   font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  width: 100%;
 }
+
+footer {
+  bottom: 0;
+  width: 100%;
+}
+
+
 
 
 textarea:hover, 
