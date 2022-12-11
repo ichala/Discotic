@@ -28,13 +28,14 @@
                 <%= image_tag (album.image_url if album.image),alt: "Example Musics image" ,width:"100px",height:"100px"%>
                 <b class=" m-0 bold mt-2"><%= album.name %></b>
                 <p class="m-0"><%= album.artist %></p>
+                <b class="m-0">#<%= album.id %></b>
               </div>
             </td>
             <td class=" col-10"><%= album.description %></td>
             <td>
               <div class="btn-group-vertical">
                  <%= link_to "Edit",edit_album_path(album.id) ,class:"btn btn-warning"  %>
-                 <%= link_to "View",edit_album_path(album.id) ,class:"btn bg-main text-white"  %>
+                 <%= link_to "View",album_path(album.id) ,class:"btn bg-main text-white"  %>
                 <%= link_to "Delete",album_path(album.id) ,data: {turbo_method: :delete, turbo_confirm: "#{ album.name } will be deleted ! Are you sure?"} ,class:"btn btn-danger"  %>
               </div>
             </td>

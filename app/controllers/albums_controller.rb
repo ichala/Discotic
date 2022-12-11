@@ -1,6 +1,9 @@
 class AlbumsController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!
+
+
+ 
 
   def new
     @album = Album.new
@@ -14,6 +17,16 @@ class AlbumsController < ApplicationController
       render :edit
     end
   end
+
+  def show
+    @album = Album.find_by_id(params[:id])
+    if @album.nil?
+      redirect_to my_albums_url(1), error: 'Album not found'
+    else
+      render :show
+    end
+  end
+  
 
 
   def create
