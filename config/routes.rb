@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
-  
-
+  get 'search' => 'search#index' , as: :search
   post 'track' => 'track#create', as: :tracks
   delete 'track/:album_id/:track_id' => 'track#destroy', as: :track_destroy
   resources :albums do

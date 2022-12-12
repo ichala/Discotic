@@ -5,12 +5,17 @@
       <i class="fa-solid fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="input-group w-50  m-auto">
-        <input type="text" class="form-control " placeholder="Album,title,artist..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn rounded-end bg-sec search-btn" type="button">Search</button>
-        </div>
-      </div>
+      <%= form_with(url: search_path,class: 'input-group w-50 m-auto', method: :get, data: {controller:'search', search_target:'form', turbo_frame: "results", turbo_action:'advance', action: 'input->search#submit_query'} ) do |form| %>
+        <%= form.text_field :query, :authenticity_token => false, :class => "form-control",:placeholder => "Album,title,artist..." , :value => params[:query]%>
+         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Explore</button>
+  <ul class="dropdown-menu dropdown-menu-end bg-sec">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+      <% end %>
       <ul class="navbar-nav  mb-2 mb-lg-0">
         <% if user_signed_in?  %>
           <li class="nav-item dropdown">
