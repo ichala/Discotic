@@ -24,6 +24,4 @@ class TrackController < ApplicationController
   def delete_params
     params.permit(:album_id, :track_id)
   end
-
-
 end

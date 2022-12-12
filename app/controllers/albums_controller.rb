@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   protect_from_forgery with: :exception
-  before_action :authenticate_user! , except: [:show]
+  before_action :authenticate_user!, except: [:show]
 
   def new
     @album = Album.new
