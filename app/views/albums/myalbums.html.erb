@@ -28,7 +28,7 @@
                 <%= image_tag (album.image_url if album.image),alt: "Example Musics image" ,width:"100px",height:"100px"%>
                 <b class=" m-0 bold mt-2"><%= album.name %></b>
                 <p class="m-0"><%= album.artist %></p>
-                <b class="m-0">#<%= album.id %></b>
+                <b class="m-0"><%= album.tracks_count %> Tracks </b>
               </div>
             </td>
             <td class=" col-10"><%= album.description %></td>

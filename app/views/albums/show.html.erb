@@ -46,84 +46,17 @@
     <div class="col-md-8">
       <b> Description: </b>
       <p class="fs-6 text-muted text-small">  <%= @album.description %> </p>
+      <b> Playlist: </b>
       <div class="card mb-3 ">
         <div class="card-body p-0 ">
           <ul class="list-group bg-main music_list">
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
+          <% @album.tracks.each do |track| %>
+            <li class="list-group-item bg-main text-white d-flex justify-content-between text-center align-items-center flex-wrap">
+              <h6 class="mb-0"><i class="fa-solid fa-music mr-2"></i> <%= track.name %> <kbd class="ml-2 bg-sec text-dark"><%= track.time %>min</kbd> </h6>
+    
+              <span class="text-white"><a href=<%= track.spotify_link %> target="_blank" class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</a></span>
             </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
-            <li class="list-group-item bg-main text-white d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><i class="fa-solid fa-music"></i> It's Not Just Me, It's Everybody</h6>
-              <span class="text-white">15min</span>
-              <span class="text-white"><button class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</button></span>
-            </li>
+          <% end %>
           </ul>
         </div>
       </div>
@@ -135,28 +68,29 @@
     <div class="modal-dialog bg-main rounded border-0">
       <div class="modal-content bg-main text-center rounded text-sec border-0">
         <div class="modal-body border-0">
-          <form>
+          <%= form_for(@track,:html => {"data-turbo" => "false"}) do |f| %>
             <div class="row">
               <div class="mb-3">
-                <label for="TrackName" class="form-label">Track Name</label>
-                <input type="text" name="" id="TrackName" class="form-control" placeholder="Track Name">
+              <%= f.label :name,"Track Name",for:"TrackName",class:"form-label" %>
+              <%= f.text_field :name,required:true, class:"form-control",id:"TrackName",placeholder:"Track Name" %>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="TrackLength" class="form-label">Track Length (min)</label>
-                <input type="number" name="" id="TrackLength" class="form-control" placeholder="Track Length">
+              <%= f.label :time,"Track Length(min)",for:"TrackLength",class:"form-label" %>
+              <%= f.number_field :time,required:true, class:"form-control",id:"TrackLength",placeholder:"Track Length" %>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="TrackLink" class="form-label">Spotify Link</label>
-                <input type="text" name="" id="TrackLink" class="form-control" placeholder="Track Link">
+              <%= f.label :spotify_link,"Spotify Link",for:"TrackLink",class:"form-label" %>
+              <%= hidden_field_tag :album_id, "#{@album.id}" %>
+              <%= f.text_field :spotify_link,required:true, class:"form-control",id:"TrackLink",placeholder:"Paste your link..." %>
               </div>
             </div>
             <div class="modal-footer border-0">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-warning">Add to Album</button>
+              <%= f.submit "Add to Album",class:"btn btn-warning" %>
             </div>
-          </form>
+          <% end %>
         </div>
       </div>
     </div>
