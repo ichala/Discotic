@@ -22,6 +22,8 @@ class AlbumsController < ApplicationController
     if @album.nil?
       redirect_to my_albums_url(1), error: 'Album not found'
     else
+      @album.increment!(:searches) if params[:search]
+      @album.increment!(:views)
       render :show
     end
   end
