@@ -9,7 +9,8 @@ class TrackController < ApplicationController
   end
 
   private
+
   def track_params
-    params.require(:track).permit(:name, :time, :spotify_link, :album_id )
+    params.require(:track).permit(:name, :time, :spotify_link, :album_id)
   end
 end

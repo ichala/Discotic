@@ -17,7 +17,7 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find_by_id(params[:id])
-    @track=Track.new
+    @track = Track.new
     if @album.nil?
       redirect_to my_albums_url(1), error: 'Album not found'
     else

@@ -1,3 +1,3 @@
 class Track < ApplicationRecord
-    belongs_to :album, counter_cache: true
+  belongs_to :album, counter_cache: true
 end
