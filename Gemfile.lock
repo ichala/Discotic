@@ -244,6 +244,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  ffi
   font-awesome-sass (~> 6.2.1)
   image_processing (~> 1.12, >= 1.12.1)
   importmap-rails
