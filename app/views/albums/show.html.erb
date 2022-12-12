@@ -9,11 +9,13 @@
               <h4 class="text-white"><%= @album.name %></h4>
               <p class="text-white mb-1">By <%= @album.artist %></p>
               <button class="btn bg-main text-white"><i class="fa-solid fa-star text-sec"></i> Add to Favorites</button>
+               <% if user_signed_in?  %>
               <% if current_user.id === @album.user_id %>
               <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i class="fa-solid fa-circle-plus"></i> Add Track
               </button>
                 <% end %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -25,8 +27,8 @@
             <span class="text-white"><%= @album.user.email %></span>
           </li>
           <li class="list-group-item bg-main text-sec d-flex justify-content-between align-items-center flex-wrap">
-            <h6 class="mb-0"><i class="fa-solid fa-calendar-days mx-2"></i>Created At</h6>
-            <span class="text-white"><%= @album.created_at.month %>/<%= @album.created_at.year %></span>
+            <h6 class="mb-0"><i class="fa-solid fa-calendar-days mx-2"></i>Release Date</h6>
+            <span class="text-white"><%= @album.release_date.month %>/<%= @album.release_date.year %></span>
           </li>
           <li class="list-group-item bg-main text-sec d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0"><i class="fa-solid fa-ranking-star mx-2"></i>Trendings</h6>
@@ -50,12 +52,18 @@
       <div class="card mb-3 ">
         <div class="card-body p-0 ">
           <ul class="list-group bg-main music_list">
-          <% @album.tracks.each do |track| %>
+          <% if @track_list.empty? %>
+            <li class="list-group-item bg-main text-white d-flex justify-content-center text-center align-items-center flex-wrap">
+              <h6 class="mb-0"> No Tracks Found </h6>
+            </li>
+          <% end %>
+          <% @track_list.each do |track| %>
             <li class="list-group-item bg-main text-white d-flex justify-content-between text-center align-items-center flex-wrap">
               <h6 class="mb-0"><i class="fa-solid fa-music mr-2"></i> <%= track.name %> <kbd class="ml-2 bg-sec text-dark"><%= track.time %>min</kbd> </h6>
-    
+              <div class="d-flex justify-content-center text-center align-items-center gap-2">
               <span class="text-white"><a href=<%= track.spotify_link %> target="_blank" class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</a></span>
-            </li>
+              <%= link_to raw("<i class='fa-solid fa-trash'></i>"),track_destroy_path(@album.id,track.id) ,data: {turbo_method: :delete, turbo_confirm: "#{ track.name } will be deleted ! Are you sure?"} ,class:"btn btn-danger btn-sm"  %>
+            </div></li>
           <% end %>
           </ul>
         </div>
@@ -63,6 +71,7 @@
     </div>
   </div>
 </div>
+  <% if user_signed_in?  %>
 <% if current_user.id === @album.user_id %>
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog bg-main rounded border-0">
@@ -95,4 +104,5 @@
       </div>
     </div>
   </div>
+<% end %>
 <% end %>
