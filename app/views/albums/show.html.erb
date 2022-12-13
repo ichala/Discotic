@@ -62,7 +62,11 @@
               <h6 class="mb-0"><i class="fa-solid fa-music mr-2"></i> <%= track.name %> <kbd class="ml-2 bg-sec text-dark"><%= track.time %>min</kbd> </h6>
               <div class="d-flex justify-content-center text-center align-items-center gap-2">
               <span class="text-white"><a href=<%= track.spotify_link %> target="_blank" class="btn btn-sm btn-success d-flex justify-content-arround align-items-center "><i class="fa-brands fa-spotify mx-2 fa-lg"></i>Listen On Spotify</a></span>
+                <% if user_signed_in?  %>
+              <% if current_user.id === @album.user_id %>
               <%= link_to raw("<i class='fa-solid fa-trash'></i>"),track_destroy_path(@album.id,track.id) ,data: {turbo_method: :delete, turbo_confirm: "#{ track.name } will be deleted ! Are you sure?"} ,class:"btn btn-danger btn-sm"  %>
+              <% end %>
+              <% end %>
             </div></li>
           <% end %>
           </ul>
