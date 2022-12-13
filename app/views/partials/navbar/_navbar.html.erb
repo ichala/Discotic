@@ -7,14 +7,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <%= form_with(url: search_path,class: 'input-group w-50 m-auto', method: :get, data: {controller:'search', search_target:'form', turbo_frame: "results", turbo_action:'advance', action: 'input->search#submit_query'} ) do |form| %>
         <%= form.text_field :query, :authenticity_token => false, :class => "form-control",:placeholder => "Album,title,artist..." , :value => params[:query]%>
-         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Explore</button>
-  <ul class="dropdown-menu dropdown-menu-end bg-sec">
-    <li><%= link_to 'Explore All', explore_path ,class: "dropdown-item" %></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
+        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Explore</button>
+        <ul class="dropdown-menu dropdown-menu-end bg-sec">
+          <li><%= link_to 'Explore All', explore_path ,class: "dropdown-item" %></li>
+          <li><%= link_to 'Trendings', trends_path ,class: "dropdown-item" %></li>
+        </ul>
       <% end %>
       <ul class="navbar-nav  mb-2 mb-lg-0">
         <% if user_signed_in?  %>
