@@ -9,7 +9,7 @@
         <%= form.text_field :query, :authenticity_token => false, :class => "form-control",:placeholder => "Album,title,artist..." , :value => params[:query]%>
          <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Explore</button>
   <ul class="dropdown-menu dropdown-menu-end bg-sec">
-    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><%= link_to 'Explore All', explore_path ,class: "dropdown-item" %></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
     <li><hr class="dropdown-divider"></li>
