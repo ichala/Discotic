@@ -108,21 +108,31 @@
       <h1 class="display-4 fw-bold lh-1 mb-3">Join to upload your own albums , music & more !</h1>
       <p class="col-lg-10 fs-4">Create an account or login to enjoy the best experience of Discotic, where you can upload your own music , create playlists with your favorite selections & much more!</p>
     </div>
-    <div class="col-md-10 mx-auto col-lg-5 ">
-      <form class="p-4 p-md-5 border rounded-3  bg-main ">
+     <div class="col-md-10 mx-auto col-lg-5 ">
+      <%= form_for(@user,:html => {:class => 'p-4 p-md-5 border rounded-3  bg-main',"data-turbo" => "false"}, as: @user, url: session_path(@user)) do |f| %>
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
+          <%= f.email_field :email,required:true, class:"form-control",id:"emailInput",placeholder:"name@example.com" %>
+          <%= f.label :email,"Email address",required:true,for:"emailInput" %>
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
+          <%= f.password_field :password, class:"form-control",id:"PasswordInput",placeholder:"Password" %>
+          <%= f.label :password,"Password",for:"PasswordInput" %>
         </div>
-        <button class="w-100 btn btn-lg btn-warning" type="submit">Login</button>
+        <div class="form-check form-switch  mb-3">
+          <%= f.check_box :remember_me, class:"form-check-input text-sec",id:"RememberMeCB"%>
+          <%= f.label :remember_me,"Remember me ?", class:"form-check-label text-white", for:"RememberMeCB" %>
+        </div>
+        <%= f.submit "Login",class:"w-100 btn btn-lg btn-warning" %>
         <hr class="text-sec">
         <small class="text-sec">You don't have an account ?</small>
-        <button class="w-100 btn btn-lg btn-outline-warning" type="submit">Signup</button>
-      </form>
+        <%= link_to "Sign up", new_registration_path(@user), class:"w-100 btn btn-lg btn-outline-warning"  %>
+      <% end %>
+      <% if notice %>
+        <p  class="alert alert-danger mt-3" role="alert"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger mt-3" role="alert"><%= alert %></p>
+      <% end %>
     </div>
   </div>
 </div>
