@@ -11,6 +11,10 @@ class ExploreController < ApplicationController
     p @filters
   end
 
+  def trends
+    @trends = Album.trends
+  end
+
   def filtering_params(params)
     params.slice(:genre, :format, :year, :style)
   end
