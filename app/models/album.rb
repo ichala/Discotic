@@ -58,6 +58,6 @@ class Album < ApplicationRecord
   def self.generate_trends
     pluck(:views, :searches, :name, :id, :image_data).sort_by do |views, searches|
       (views / 2) + searches
-    end.reverse.first(10)
+    end.reverse.first(6)
   end
 end
