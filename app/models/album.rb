@@ -1,6 +1,10 @@
 class Album < ApplicationRecord
   belongs_to :user, counter_cache: true
   has_many :tracks, dependent: :delete_all
+  scope :filter_by_genre, -> (genre) { where genre: genre }
+  scope :filter_by_style, -> (style) { where style: style }
+  scope :filter_by_format, -> (format) { where format: format }
+  scope :filter_by_year, -> (year) { where('extract(year from release_date) = ?', year) }
 
   include ImageUploader::Attachment(:image)
 
@@ -23,4 +27,15 @@ class Album < ApplicationRecord
       )
     end
   end
+
+  def self.get_filters
+    {
+      all: all.count,
+      genre: group(:genre).count,
+      format: group(:format).count,
+      style: group(:style).count,
+      year: group("TO_CHAR(release_date, 'YYYY')").count
+    }
+  end
+
 end
