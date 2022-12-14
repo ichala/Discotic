@@ -15,5 +15,6 @@ services:
         fromDatabase:
           name: discotic
           property: connectionString
+          plan: free
       - key: RAILS_MASTER_KEY
         sync: false
