@@ -23,6 +23,7 @@ class AlbumsController < ApplicationController
       redirect_to my_albums_url(1), error: 'Album not found'
     else
       @rank = Album.trends_pos(@album.id)
+      @favorite = current_user.favorites.where(album_id: @album.id).exists? if user_signed_in?
       @album.increment!(:searches) if params[:search]
       @album.increment!(:views)
       render :show

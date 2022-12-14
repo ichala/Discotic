@@ -1,6 +1,7 @@
 class Album < ApplicationRecord
   belongs_to :user, counter_cache: true
   has_many :tracks, dependent: :delete_all
+  has_many :favorites, dependent: :delete_all
   scope :filter_by_genre, ->(genre) { where(genre:) }
   scope :filter_by_style, ->(style) { where(style:) }
   scope :filter_by_format, ->(format) { where(format:) }

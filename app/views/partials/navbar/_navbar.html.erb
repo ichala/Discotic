@@ -19,9 +19,10 @@
             <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-regular fa-circle-user"></i>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <ul class="dropdown-menu dropdown-menu-end bg-main text-white" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item disabled" href="#"><%= current_user.email %> </a></li>
-              <li><%= link_to raw('<i class="fa-solid fa-record-vinyl"></i> My Albums'), my_albums_url(1) ,class: 'dropdown-item' %></li>
+              <li><%= link_to raw('<i class="fa-brands fa-gratipay"></i> My Favorites'), favorites_path ,class: 'dropdown-item text-sec' %></li>
+              <li><%= link_to raw('<i class="fa-solid fa-record-vinyl"></i> My Albums'), my_albums_url(1) ,class: 'dropdown-item text-sec' %></li>
               <li> <%= link_to raw('<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout'), destroy_user_session_path,  data: {turbo_method: :delete} ,class: 'dropdown-item text-danger' %></li>
             </ul>
           </li>
