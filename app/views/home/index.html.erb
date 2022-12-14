@@ -12,41 +12,20 @@
 <div class="shadow-divider"></div>
 <div class="px-4 pt-5 text-center text-sec bg-main pb-4">
   <h1 class="display-4 fw-bold">Trending Releases</h1>
-  <p class="lead mb-4 text-white">Top Searched & Visited Releases </p>
+  <p class="lead mb-4 text-white">Top Searched & Visited Albums </p>
   <div class="d-flex flex-wrap gap-5 m-auto justify-content-center align-items-center">
-    <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-      <%= image_tag ("placeholderimage.jpg"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
-      <b class="text-white m-0 bold mt-2">Album Name</b>
-      <p class="text-white m-0">Artist</p>
+    <% @trends.each_with_index do |release,index|%>
+    <%= link_to  album_path(release[:id]), class:'text-decoration-none'  do %>
+      <div class="d-flex gap-1 flex-column  justify-content-start align-items-start">
+      <%= image_tag ("/uploads/#{release[:image]['id']}"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+      <b class="text-white m-0 bold mt-2"><%= release[:name][0..20]... %></b>
+      <p class="text-white m-0">#<%= index+1 %> </p>
     </div>
-    <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-      <%= image_tag ("placeholderimage.jpg"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
-      <b class="text-white m-0 bold mt-2">Album Name</b>
-      <p class="text-white m-0">Artist</p>
-    </div>
-    <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-      <%= image_tag ("placeholderimage.jpg"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
-      <b class="text-white m-0 bold mt-2">Album Name</b>
-      <p class="text-white m-0">Artist</p>
-    </div>
-    <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-      <%= image_tag ("placeholderimage.jpg"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
-      <b class="text-white m-0 bold mt-2">Album Name</b>
-      <p class="text-white m-0">Artist</p>
-    </div>
-    <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-      <%= image_tag ("placeholderimage.jpg"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
-      <b class="text-white m-0 bold mt-2">Album Name</b>
-      <p class="text-white m-0">Artist</p>
-    </div>
-    <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-      <%= image_tag ("placeholderimage.jpg"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
-      <b class="text-white m-0 bold mt-2">Album Name</b>
-      <p class="text-white m-0">Artist</p>
-    </div>
+    <% end %>
+    <% end %>
   </div>
   <div class="d-grid gap-2 mt-3 d-sm-flex justify-content-sm-center">
-    <button type="button" class="btn btn-outline-warning btn-sm px-4 d-flex gap-2 justify-content-center align-items-center">Check more <i class=" fa-solid fa-arrow-right"></i></button>
+  <%= link_to  raw('Check more <i class=" fa-solid fa-arrow-right"></i>'), trends_path,class:"btn btn-outline-warning btn-sm px-4 d-flex gap-2 justify-content-center align-items-center" %>
   </div>
 </div>
 <div class="shadow-divider"></div>
@@ -54,52 +33,23 @@
   <h1 class="display-4 fw-bold">Recently Added</h1>
   <p class="lead mb-4 ">Recently Added Albums </p>
   <div class="d-flex flex-wrap gap-5 m-auto justify-content-center align-items-center">
-    <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-      <%= image_tag ("placeholderimage.jpg"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
-      <b class=" m-0 bold mt-2">Album Name</b>
-      <p class=" m-0">Artist</p>
+      <% @recent.each_with_index do |release|%>
+    <%= link_to  album_path(release.id), class:'text-decoration-none'  do %>
+      <div class="d-flex gap-1 flex-column  justify-content-start align-items-start">
+      <%= image_tag (release.image_url),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+      <b class="text-dark m-0 bold mt-2"><%= release.name[0..20]... %></b>
+      <p class="text-dark m-0"><%= release.artist[0..20]... %> </p>
     </div>
-    <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-      <%= image_tag ("placeholderimage.jpg"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
-      <b class="m-0 bold mt-2">Album Name</b>
-      <p class="m-0">Artist</p>
-    </div>
+    <% end %>
+    <% end %>
+
+
   </div>
   <div class="d-grid gap-2 mt-3 d-sm-flex justify-content-sm-center">
-    <button type="button" class="btn text-white bg-main btn-sm px-4 d-flex gap-2 justify-content-center align-items-center">Check more <i class=" fa-solid fa-arrow-right"></i></button>
+    <%= link_to  raw('Explore All <i class=" fa-solid fa-arrow-right"></i>'), explore_path,class:"btn text-white bg-main btn-sm px-4 d-flex gap-2 justify-content-center align-items-center" %>
   </div>
 </div>
-<div class="shadow-divider"></div>
-<div class=" w-100">
-  <div class="d-md-flex flex-md-equal w-100 ">
-    <div class="bg-main  w-100  pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-      <div class="my-3 text-sec py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-    </div>
-    <div class=" bg-white w-100  pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-    </div>
-  </div>
-  <div class="d-md-flex flex-md-equal w-100  ">
-    <div class="bg-white  w-100  pt-3 px-3 pt-md-5 px-md-5 text-center  overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-    </div>
-    <div class="bg-main  w-100  pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3 text-sec">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-    </div>
-  </div>
-</div>
+
 <div class="shadow-divider"></div>
   <% if !user_signed_in?  %>
 <div class="container col-xl-10 col-xxl-8 px-4 py-5 ">

@@ -61,4 +61,8 @@ class Album < ApplicationRecord
       (views / 2) + searches
     end.reverse.first(6)
   end
+
+  def self.recently_added
+    order('created_at DESC').limit(6)
+  end
 end

@@ -3,18 +3,15 @@
     <h2>Add New Album</h2>
   </div>
   <% if error %>
-  <% error.each do |msg| %>
-    <div class="alert alert-danger" role="alert">
-      <%= msg %>
-    </div>
+    <% error.each do |msg| %>
+      <div class="alert alert-danger" role="alert">
+        <%= msg %>
+      </div>
+    <% end %>
   <% end %>
-  <% end %>
-
-
   <div class="row">
- 
     <div class="col-md-12 order-md-1">
-      <%= form_for(@album,:html => {"data-turbo" => "false"}) do |f| %> 
+      <%= form_for(@album,:html => {"data-turbo" => "false"}) do |f| %>
         <div class="row">
           <div class="col-md-6 mb-3">
             <%= f.label :name,"Album Name",for:"AlbumName" %>
@@ -33,7 +30,22 @@
             <%= f.date_field :release_date,required:true, class:"form-control",id:"ReleaseDate" %>
           </div>
           <div class="col-md-6 mb-3">
-            <%= f.label :image,"Album Cover Image",for:"ImageLink" %>
+            <%= f.label :style,"Style",for:"Style" %>
+            <%= f.text_field :style,required:true, class:"form-control",id:"Style" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <%= f.label :genre ,"Genre",for:"Genre" %>
+            <%= f.text_field :genre,required:true, class:"form-control",id:"Genre" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <%= f.label :format,"Format",for:"Format" %>
+            <%= f.text_field :format,required:true, class:"form-control",id:"Format" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mb-3">
             <%= f.file_field :image,required:true, class:"form-control",id:"ImageLink" %>
           </div>
         </div>
