@@ -3,6 +3,8 @@
   <head>
     <title>Discotic</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Some music lovers desire a deeper connection with music than streaming or radio can provide. Discogs is an online database and marketplace of music releases that helps any enthusiast — from casual fan to professional collector — savor music in a more personal and meaningful way">
+    <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -10,7 +12,6 @@
   </head>
   <body data-controller="search">
     <%= render "partials/navbar/navbar" %>
-
     <div class="mt-5 content-data">
       <%= yield %>
     </div>
