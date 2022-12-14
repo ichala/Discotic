@@ -85,6 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: Discotic_production
-  username: Discotic
-  password: <%= ENV["DISCOTIC_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
