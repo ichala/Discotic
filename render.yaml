@@ -5,7 +5,7 @@ databases:
     plan: Free
 services:
   - type: web
-    name: mysite
+    name: discotic
     env: ruby
     plan: Free 
     buildCommand: "./bin/render-build.sh"
