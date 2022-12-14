@@ -2,9 +2,10 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @favorites = Album.joins(:favorites).where(favorites: { user_id: current_user.id }).order(created_at: :desc).paginate(
-      page: params[:page], per_page: 8
-    )
+    @favorites = Album.joins(:favorites).where(favorites: { user_id: current_user.id })
+      .order(created_at: :desc).paginate(
+        page: params[:page], per_page: 8
+      )
   end
 
   def create

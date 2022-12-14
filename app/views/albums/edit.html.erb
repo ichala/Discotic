@@ -24,14 +24,29 @@
         </div>
         <%= f.label :description,"Description",for:"Description" %>
         <%= f.text_area :description,required:true,class:"form-control mb-3",id:"Description",style:"height: 100px" %>
-        <div class="row">
+           <div class="row">
           <div class="col-md-6 mb-3">
             <%= f.label :release_date,"Release Date",for:"ReleaseDate" %>
             <%= f.date_field :release_date,required:true, class:"form-control",id:"ReleaseDate" %>
           </div>
           <div class="col-md-6 mb-3">
-            <%= f.label :image,"Album Cover Image",for:"ImageLink" %>
-            <%= f.file_field :image, class:"form-control",id:"ImageLink" %>
+            <%= f.label :style,"Style",for:"Style" %>
+            <%= f.text_field :style,required:true, class:"form-control",id:"Style" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <%= f.label :genre ,"Genre",for:"Genre" %>
+            <%= f.text_field :genre,required:true, class:"form-control",id:"Genre" %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <%= f.label :format,"Format",for:"Format" %>
+            <%= f.text_field :format,required:true, class:"form-control",id:"Format" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <%= f.file_field :image,required:true, class:"form-control",id:"ImageLink" %>
           </div>
         </div>
         <%= f.submit "Update",class:"w-100 btn btn-lg btn-warning mb-5" %>
