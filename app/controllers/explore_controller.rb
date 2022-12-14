@@ -8,7 +8,6 @@ class ExploreController < ApplicationController
                                                                         per_page: 8)
       end
     end
-    p @filters
   end
 
   def trends
