@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'favorites'=>'favorites#index', as: :favorites
+  get 'favorites/:album_id'=> 'favorites#create', as: :favorite_create
+  delete 'favorites/:album_id'=> 'favorites#destroy', as: :favorite_destroy
   get 'explore' => 'explore#index' , as: :explore
   get 'explore/trends' => 'explore#trends' , as: :trends
   get 'search' => 'search#index' , as: :search
