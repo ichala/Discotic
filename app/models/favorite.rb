@@ -6,7 +6,6 @@ class Favorite < ApplicationRecord
   # validations
   validates :user_id, presence: true
   validates :album_id, presence: true
-  
 
   def self.check_exist(user_id, album_id)
     where(user_id:, album_id:).exists?
