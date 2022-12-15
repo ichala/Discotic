@@ -1,7 +1,21 @@
 class Album < ApplicationRecord
+  #associations
   belongs_to :user, counter_cache: true
   has_many :tracks, dependent: :delete_all
   has_many :favorites, dependent: :delete_all
+
+  #validations
+  validates :name, presence: true,length: { maximum: 50 } 
+  validates :artist, presence: true,length: { maximum: 50 } 
+  validates :genre, presence: true,length: { maximum: 50 } 
+  validates :style, presence: true,length: { maximum: 50 } 
+  validates :format, presence: true,length: { maximum: 50 }
+  validates :release_date, presence: true
+  validates :description, presence: true
+  validates :image_data, presence: true
+
+
+  #scopes
   scope :filter_by_genre, ->(genre) { where(genre:) }
   scope :filter_by_style, ->(style) { where(style:) }
   scope :filter_by_format, ->(format) { where(format:) }

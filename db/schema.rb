@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_114020) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.text "image_data"
-    t.integer "tracks_count"
+    t.integer "tracks_count", default: 0
     t.integer "searches", default: 0
     t.integer "views", default: 0
     t.string "genre", default: "Rock"
