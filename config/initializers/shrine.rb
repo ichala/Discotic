@@ -7,6 +7,7 @@ if  Rails.env.test?
     store: Shrine::Storage::Memory.new,
   }
 else
+  
  Shrine.storages = {
    cache: Shrine::Storage::FileSystem.new("public", prefix:"uploads/cache"), # temporary
    store: Shrine::Storage::FileSystem.new("storage", prefix: "uploads"),       # permanent
