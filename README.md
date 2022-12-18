@@ -17,6 +17,7 @@
 * [Installation](#installation)
 * [Tools](#tools)
 * [Testing](#testing)
+* [Live Demo & Screenshots](#live-demo)
 * [Authors](#authors)
 
 
@@ -40,6 +41,9 @@
 - run rails db:migrate RAILS_ENV=test
 - run rspec
 
+## Live Demo
+
+[Discotic Live Demo](https://discotic.onrender.com/)
 
 ## Authors
 
