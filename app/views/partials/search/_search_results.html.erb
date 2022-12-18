@@ -14,7 +14,7 @@
               <div class="card m-3 bg-main res-card" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-lg-5">
-                    <%= image_tag (album.image_url if album.image),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+                    <%= image_tag (album.image_data),alt: "Example Musics image" ,width:"200px",height:"200px"%>
                   </div>
                   <div class="col-lg-7 ">
                     <div class="card-body ml-4">
@@ -53,7 +53,7 @@
               <div class="card p-2 m-3 bg-main tra-card" >
                 <div class="row g-0 d-flex align-items-center justify-content-center">
                   <div class="col-lg-3 d-flex align-items-center justify-content-center">
-                    <%= image_tag (Album.find(track.album_id).image_url),alt: "Example Musics image" ,width:"100px",height:"100px"%>
+                    <%= image_tag (Album.find(track.image_data)),alt: "Example Musics image" ,width:"100px",height:"100px"%>
                   </div>
                   <div class="col-lg-9 ">
                     <div class="card-body text-start">
@@ -92,7 +92,7 @@
                   <div class="row g-0">
                     <div class="row">
                       <div class="card-body d-flex flex-column text-center align-items-center justify-content-center">
-                        <%= image_tag (artist.image_url),class:'rounded-circle',width:"100px",height:"100px"%>
+                        <%= image_tag (artist.image_data),class:'rounded-circle',width:"100px",height:"100px"%>
                         <h5 class="card-title mt-2"> <%= artist.artist[0..40] %>...</h5>
                         <p class="card-text trancate">From <small class="text-sec"><%= artist.name[0..60] %></small></p>
                       </div>

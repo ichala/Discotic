@@ -7,10 +7,10 @@
     <% @trends.each_with_index do |album,index | %>
       <div class="col-md-4 mb-3">
       <%= link_to  album_path(album[:id]),class:'text-decoration-none'  do %>
-        <div class="card  mb-2 border-0 rounded" style='background:url(/uploads/<%= album[:image]['id'] %>);'>
+        <div class="card  mb-2 border-0 rounded" style='background:url(<%= album[:image].url %>);'>
           <div class="card-body album_cover rounded" >
             <div class="d-flex flex-column align-items-center text-center">
-              <%= image_tag ("/uploads/#{album[:image]['id']}"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+              <%= image_tag (album[:image]),alt: "Example Musics image" ,width:"200px",height:"200px"%>
               <div class="mt-3">
                 <h4 class="text-white"><%= album[:name][0..20]... %></h4>
                 <button class="btn bg-main text-white">#<%= index+1 %> <kbd class="ml-2 bg-sec text-dark">score: <%= album[:score] %></kbd>

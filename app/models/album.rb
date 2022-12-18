@@ -42,8 +42,7 @@ class Album < ApplicationRecord
   def self.trends
     @trends = []
     generate_trends.each do |single|
-      @trends << { score: ((single[0] / 2) + single[1]), name: single[2], id: single[3],
-                   image: ActiveSupport::JSON.decode(single[4]) }
+      @trends << { score: ((single[0] / 2) + single[1]), name: single[2], id: single[3],image: Album.find(single[3]).image_data.attached? ? Album.find(single[3]).image_data : nil}
     end
     @trends
   end
@@ -57,7 +56,7 @@ class Album < ApplicationRecord
   end
 
   def self.generate_trends
-    pluck(:views, :searches, :name, :id, :image_data).sort_by do |views, searches|
+    pluck(:views, :searches, :name, :id).sort_by do |views, searches|
       (views / 2) + searches
     end.reverse.first(6)
   end

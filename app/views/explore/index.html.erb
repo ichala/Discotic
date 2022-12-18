@@ -75,7 +75,7 @@
                   <% if !@albums.empty? %>
                     <% @albums.each do |album| %>
                       <tr>
-                        <td class="image"><img src=<%= album.image_url %> alt=""></td>
+                        <td class="image"><%= image_tag (album.image_data)%></td>
                         <td class="product"><strong><%= album.name %></strong><br>
                           <%= album.description[1..20]... %></td>
                         <td class="rate text-dark"><span>by <%= album.artist %> </td>

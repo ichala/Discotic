@@ -17,7 +17,7 @@
     <% @trends.each_with_index do |release,index|%>
     <%= link_to  album_path(release[:id]), class:'text-decoration-none'  do %>
       <div class="d-flex gap-1 flex-column  justify-content-start align-items-start">
-      <%= image_tag ("/uploads/#{release[:image]['id']}"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+      <%= image_tag (release[:image].url),alt: "Example Musics image" ,width:"200px",height:"200px"%>
       <b class="text-white m-0 bold mt-2"><%= release[:name][0..20]... %></b>
       <p class="text-white m-0">#<%= index+1 %> </p>
     </div>
@@ -36,7 +36,7 @@
       <% @recent.each_with_index do |release|%>
     <%= link_to  album_path(release.id), class:'text-decoration-none'  do %>
       <div class="d-flex gap-1 flex-column  justify-content-start align-items-start">
-      <%= image_tag (release.image_url),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+      <%= image_tag (release.image_data),alt: "Example Musics image" ,width:"200px",height:"200px"%>
       <b class="text-dark m-0 bold mt-2"><%= release.name[0..20]... %></b>
       <p class="text-dark m-0"><%= release.artist[0..20]... %> </p>
     </div>

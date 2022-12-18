@@ -3,7 +3,7 @@
     <%@favorites.each do |favorite|%>
     <div class="col-md-3 mb-3 ">
       <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
-        <%= image_tag (favorite.image_url),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+        <%= image_tag (favorite.image_data),alt: "Example Musics image" ,width:"200px",height:"200px"%>
         <b class="text-main m-0 bold mt-2"><%= favorite.name %></b>
         <p class="text-main m-0">Artist</p>
          <%= link_to  favorite_destroy_path(favorite.id) , data: { turbo_method: "delete" } do %>
