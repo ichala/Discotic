@@ -43,7 +43,7 @@
 
 ## Live Demo
 
-[Discotic Live Demo](https://discotic.onrender.com/)
+[Discotic Live Demo](https://www.discotic.chala.dev/)
 
 ## Authors
 
