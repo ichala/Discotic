@@ -7,7 +7,7 @@ class Album < ApplicationRecord
   scope :filter_by_format, ->(format) { where(format:) }
   scope :filter_by_year, ->(year) { where('extract(year from release_date) = ?', year) }
 
-  include ImageUploader::Attachment(:image)
+  has_one_attached :image_data
 
   def self.search_albums(params)
     if params[:query].blank?

@@ -15,6 +15,8 @@ gem 'pg', '~> 1.1'
 
 gem 'dotenv-rails'
 
+gem 'google-cloud-storage', '~> 1.44'
+
 gem 'bootstrap', '~> 5.1.3'
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -35,7 +37,6 @@ gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap-style'
 
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
-gem 'shrine', '~> 3.3'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
@@ -57,6 +58,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"

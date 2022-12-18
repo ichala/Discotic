@@ -33,6 +33,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.user_id = current_user.id
+    p album_params
     if @album.save
       redirect_to my_albums_url(1), success: "#{@album.name} Album Created !"
     else
@@ -65,6 +66,6 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:name, :description, :artist, :release_date, :image, :genre, :style, :format)
+    params.require(:album).permit(:name, :description, :artist, :release_date, :image_data, :genre, :style, :format)
   end
 end
