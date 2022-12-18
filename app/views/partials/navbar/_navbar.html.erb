@@ -1,36 +1,37 @@
 <nav class="navbar navbar-expand-lg fixed-top text-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Discotic</a>
+    <a class="navbar-brand" href="/">Disc<i class="fa-solid text-sec fa-compact-disc o-icon"></i>tic</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <i class="fa-solid fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+      <%= form_with(url: search_path,class: 'input-group w-50 m-auto', method: :get, data: {controller:'search', search_target:'form', turbo_frame: "results", turbo_action:'advance', action: 'input->search#submit_query'} ) do |form| %>
+        <%= form.text_field :query, :authenticity_token => false, :class => "form-control",:placeholder => "Album,title,artist..." , :value => params[:query]%>
+        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Explore</button>
+        <ul class="dropdown-menu dropdown-menu-end bg-sec">
+          <li><%= link_to 'Explore All', explore_path ,class: "dropdown-item" %></li>
+          <li><%= link_to 'Trendings', trends_path ,class: "dropdown-item" %></li>
+        </ul>
+      <% end %>
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <% if user_signed_in?  %>
+          <li class="nav-item dropdown">
+            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-regular fa-circle-user"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end bg-main text-white" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item disabled" href="#"><%= current_user.email %> </a></li>
+              <li><%= link_to raw('<i class="fa-brands fa-gratipay"></i> My Favorites'), favorites_path ,class: 'dropdown-item text-sec' %></li>
+              <li><%= link_to raw('<i class="fa-solid fa-record-vinyl"></i> My Albums'), my_albums_url(1) ,class: 'dropdown-item text-sec' %></li>
+              <li> <%= link_to raw('<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout'), destroy_user_session_path,  data: {turbo_method: :delete} ,class: 'dropdown-item text-danger' %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Log in", new_session_path(User), class:"btn btn-warning bg-sec" %>
+          </li>
+        <% end %>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

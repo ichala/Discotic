@@ -1,0 +1,50 @@
+<div class="container py-4" data-controller="album">
+  <% if success %>
+    <div class="alert alert-success m-3" role="alert">
+      <%= success %>
+    </div>
+  <% end %>
+  <% if error %>
+    <div class="alert alert-danger m-3" role="alert">
+      <%= error %>
+    </div>
+  <% end %>
+ <%= link_to raw('<i class="fa-solid fa-plus"></i> Add New Album'),new_album_path,class:"btn bg-main text-white mt-5 mb-2"  %>
+
+  <div class="table-responsive">
+    <table class="table table-striped text-start">
+      <thead>
+        <tr class="bg-main text-sec">
+          <th scope="col-2">Album</th>
+          <th scope="col-10">Description</th>
+          <th scope="col-10">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @albums.each do |album|   %>
+          <tr class="text-start">
+            <td class="col-2">
+              <div class="d-flex gap-1 flex-column justify-content-start align-items-start">
+                <%= image_tag (album.image_url if album.image),alt: "Example Musics image" ,width:"100px",height:"100px"%>
+                <b class=" m-0 bold mt-2"><%= album.name %></b>
+                <p class="m-0"><%= album.artist %></p>
+                <b class="m-0"><%= album.tracks_count %> Tracks </b>
+              </div>
+            </td>
+            <td class=" col-10"><%= album.description %></td>
+            <td>
+              <div class="btn-group-vertical">
+                 <%= link_to "Edit",edit_album_path(album.id) ,class:"btn btn-warning"  %>
+                 <%= link_to "View",album_path(album.id) ,class:"btn bg-main text-white"  %>
+                <%= link_to "Delete",album_path(album.id) ,data: {turbo_method: :delete, turbo_confirm: "#{ album.name } will be deleted ! Are you sure?"} ,class:"btn btn-danger"  %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination">
+    <%= will_paginate @albums , renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>

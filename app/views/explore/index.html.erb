@@ -1,0 +1,108 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="grid search">
+        <div class="grid-body">
+          <div class="row">
+            <div class="col-md-3">
+              <h2 class="text-md"><i class="fa fa-filter"></i> Filters</h2>
+              <hr>
+              <ol class="list-group list-group-numbered">
+                <%= link_to  explore_path(),class:'text-decoration-none' do %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">All</div>
+                    </div>
+                    <span class="badge bg-main rounded-pill p-2 text-center"><%= @filters[:all] %></span>
+                  </li>
+                <% end %>
+              </ol>
+              <b>Genre:</b>
+              <ol class="list-group list-group-numbered">
+                <% @filters[:genre].each do |key, value| %>
+                  <%= link_to  explore_path(:genre => key),class:'text-decoration-none' do %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold"><%= key %></div>
+                      </div>
+                      <span class="badge bg-main rounded-pill p-2 text-center"><%= value %></span>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ol>
+              <div class="padding"></div>
+              <b>Format:</b>
+              <% @filters[:format].each do |key, value| %>
+                <%= link_to  ("explore?format=#{key}"),class:'text-decoration-none' do %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold"><%= key %></div>
+                    </div>
+                    <span class="badge bg-main rounded-pill p-2 text-center"><%= value %></span>
+                  </li>
+                <% end %>
+              <% end %>
+              <div class="padding"></div>
+              <b>Style:</b>
+              <% @filters[:style].each do |key, value| %>
+                <%= link_to  explore_path(:style => key),class:'text-decoration-none' do %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold"><%= key %></div>
+                    </div>
+                    <span class="badge bg-main rounded-pill p-2 text-center"><%= value %></span>
+                  </li>
+                <% end %>
+              <% end %>
+              <div class="padding"></div>
+              <b>Year:</b>
+              <% @filters[:year].each do |key, value| %>
+                <%= link_to  explore_path(:year => key),class:'text-decoration-none' do %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold"><%= key %></div>
+                    </div>
+                    <span class="badge bg-main rounded-pill p-2 text-center"><%= value %></span>
+                  </li>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="col-md-9">
+              <h2><i class="fa fa-file-o"></i> Result</h2>
+              <hr>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <% if !@albums.empty? %>
+                    <% @albums.each do |album| %>
+                      <tr>
+                        <td class="image"><img src=<%= album.image_url %> alt=""></td>
+                        <td class="product"><strong><%= album.name %></strong><br>
+                          <%= album.description[1..20]... %></td>
+                        <td class="rate text-dark"><span>by <%= album.artist %> </td>
+                          <td class="price text-right"><%= album.tracks_count %> Tracks</td>
+                          <td class="text-center">
+                            <a href=<%=album_path(album.id) %> class='text-decoration-none' >
+                              <button class='btn btn-sm btn-warning'> <i class="fa fa-eye"></i></button>
+                            </a>
+                          </td>
+                        </tr>
+                      <% end %>
+                    <% else %>
+                      <tr>
+                        <td class="product"><strong>Nothing found</strong><br>
+                          Please try again with different filters</td>
+                      </tr>
+                    <% end %>
+                  </table>
+                  <% if @albums %>
+                    <%= will_paginate @albums , renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5"></div>
