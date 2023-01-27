@@ -1,24 +1,65 @@
-# README
+<p align='center'>
+<img alt="GitHub forks" src="https://img.shields.io/badge/Open-Source-green">
+</p>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Discotic
 
-Things you may want to cover:
+> Discotic is a basic version of Discogs, which is a database of musical recordings. you can share & explore thousands of OG Albums & Tracks
 
-* Ruby version
 
-* System dependencies
+![MOCK](https://user-images.githubusercontent.com/89282221/207728971-ba4f6efa-2980-448c-8340-7df2c54b179f.png)
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+## Table of Contents 
 
-* Services (job queues, cache servers, search engines, etc.)
+* [Installation](#installation)
+* [Tools](#tools)
+* [Testing](#testing)
+* [Live Demo & Screenshots](#live-demo)
+* [Authors](#authors)
 
-* Deployment instructions
 
-* ...
+## Installation
+- clone [https://github.com/ichala/Discotic.git](https://github.com/ichala/Discotic.git)
+- cd Discotic
+- bundle install
+- create .env based on .env.example & Add necessary credentials 
+- rails db:setup db:migrate
+- rails s
+
+## Tools
+
+- Ruby On Rails v7.0
+- Boostrap v5.0
+- Postgres 
+- rspec
+
+## Testing
+
+- run rails db:migrate RAILS_ENV=test
+- run rspec
+
+## Live Demo
+
+Coming Soon
+
+## Authors
+
+👤 **Ali Jendoubi**
+
+- GitHub: [@ichala](https://github.com/ichala)
+- Twitter: [@_ichala](https://twitter.com/_ichala)
+- LinkedIn: [@alijendoubi](https://www.linkedin.com/in/alijendoubi/)
+
+
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+
+## 📝 License
+
+This project is MIT licensed.

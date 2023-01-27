@@ -1,0 +1,90 @@
+<div class="px-4 pt-5 mt-5 text-center ">
+  <h1 class="display-4 fw-bold">Explore Unlimited Music </h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Some music lovers desire a deeper connection with music than streaming or radio can provide. Discotic is an online database and marketplace of music releases that helps any enthusiast — <i class="lead">from casual fan to professional collector</i> — savor music in a more personal and meaningful way. </p>
+  </div>
+  <div class="overflow-hidden" style="max-height: 30vh;">
+    <div class="container px-5">
+      <%= image_tag ("home_bg_header.png"),alt: "Example Musics image", class: "img-fluid rounded-3  mb-4" ,width:"700",height:"500"%>
+    </div>
+  </div>
+</div>
+<div class="shadow-divider"></div>
+<div class="px-4 pt-5 text-center text-sec bg-main pb-4">
+  <h1 class="display-4 fw-bold">Trending Releases</h1>
+  <p class="lead mb-4 text-white">Top Searched & Visited Albums </p>
+  <div class="d-flex flex-wrap gap-5 m-auto justify-content-center align-items-center">
+    <% @trends.each_with_index do |release,index|%>
+    <%= link_to  album_path(release[:id]), class:'text-decoration-none'  do %>
+      <div class="d-flex gap-1 flex-column  justify-content-start align-items-start">
+      <%= image_tag ("/uploads/#{release[:image]['id']}"),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+      <b class="text-white m-0 bold mt-2"><%= release[:name][0..20]... %></b>
+      <p class="text-white m-0">#<%= index+1 %> </p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="d-grid gap-2 mt-3 d-sm-flex justify-content-sm-center">
+  <%= link_to  raw('Check more <i class=" fa-solid fa-arrow-right"></i>'), trends_path,class:"btn btn-outline-warning btn-sm px-4 d-flex gap-2 justify-content-center align-items-center" %>
+  </div>
+</div>
+<div class="shadow-divider"></div>
+<div class="px-4 pt-5 text-center pb-4">
+  <h1 class="display-4 fw-bold">Recently Added</h1>
+  <p class="lead mb-4 ">Recently Added Albums </p>
+  <div class="d-flex flex-wrap gap-5 m-auto justify-content-center align-items-center">
+      <% @recent.each_with_index do |release|%>
+    <%= link_to  album_path(release.id), class:'text-decoration-none'  do %>
+      <div class="d-flex gap-1 flex-column  justify-content-start align-items-start">
+      <%= image_tag (release.image_url),alt: "Example Musics image" ,width:"200px",height:"200px"%>
+      <b class="text-dark m-0 bold mt-2"><%= release.name[0..20]... %></b>
+      <p class="text-dark m-0"><%= release.artist[0..20]... %> </p>
+    </div>
+    <% end %>
+    <% end %>
+
+
+  </div>
+  <div class="d-grid gap-2 mt-3 d-sm-flex justify-content-sm-center">
+    <%= link_to  raw('Explore All <i class=" fa-solid fa-arrow-right"></i>'), explore_path,class:"btn text-white bg-main btn-sm px-4 d-flex gap-2 justify-content-center align-items-center" %>
+  </div>
+</div>
+
+<div class="shadow-divider"></div>
+  <% if !user_signed_in?  %>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5 ">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Join to upload your own albums , music & more !</h1>
+      <p class="col-lg-10 fs-4">Create an account or login to enjoy the best experience of Discotic, where you can upload your own music , create playlists with your favorite selections & much more!</p>
+    </div>
+     <div class="col-md-10 mx-auto col-lg-5 ">
+      <%= form_for(@user,:html => {:class => 'p-4 p-md-5 border rounded-3  bg-main',"data-turbo" => "false"}, as: @user, url: session_path(@user)) do |f| %>
+        <div class="form-floating mb-3">
+          <%= f.email_field :email,required:true, class:"form-control",id:"emailInput",placeholder:"name@example.com" %>
+          <%= f.label :email,"Email address",required:true,for:"emailInput" %>
+        </div>
+        <div class="form-floating mb-3">
+          <%= f.password_field :password, class:"form-control",id:"PasswordInput",placeholder:"Password" %>
+          <%= f.label :password,"Password",for:"PasswordInput" %>
+        </div>
+        <div class="form-check form-switch  mb-3">
+          <%= f.check_box :remember_me, class:"form-check-input text-sec",id:"RememberMeCB"%>
+          <%= f.label :remember_me,"Remember me ?", class:"form-check-label text-white", for:"RememberMeCB" %>
+        </div>
+        <%= f.submit "Login",class:"w-100 btn btn-lg btn-warning" %>
+        <hr class="text-sec">
+        <small class="text-sec">You don't have an account ?</small>
+        <%= link_to "Sign up", new_registration_path(@user), class:"w-100 btn btn-lg btn-outline-warning"  %>
+      <% end %>
+      <% if notice %>
+        <p  class="alert alert-danger mt-3" role="alert"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger mt-3" role="alert"><%= alert %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+
